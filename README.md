@@ -67,7 +67,3 @@ pyinstaller src\kindelHelper.spec
 ## 📜 开源许可
 
 基于 [MIT license](https://opensource.org/licenses/MIT) 许可进行开源。
-
-## ➕ 作者
-
-![微信公众号](http://ww1.sinaimg.cn/large/006wYWbGly1gfrkwvgus7j30lb0l7go9.jpg)
