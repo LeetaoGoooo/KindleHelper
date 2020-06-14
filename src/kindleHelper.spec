@@ -3,7 +3,7 @@
 block_cipher = None
 
 
-a = Analysis(['kindleHelper.py', 'ui/app.py', 'ui/__init__.py', 'tools/__init__.py', 'tools/download.py', 'tools/fake_user_agent.py', 'tools/ksend.py', 'exceptions/__init__.py', 'exceptions/configException.py', 'exceptions/ksendException.py', 'exceptions/websiteException.py', 'website/__init__.py', 'website/lanjuhua.py', 'website/kankan.py', 'website/weekread.py', 'widgets/downloaded.py', 'widgets/downloading.py', 'widgets/progressbar.py', 'widgets/send.py', 'widgets/systray.py', 'worker/__init__.py', 'worker/download.py', 'worker/search.py', 'worker/send.py'],
+a = Analysis(['kindleHelper.py', 'ui/app.py', 'ui/__init__.py', 'tools/__init__.py', 'tools/download.py', 'tools/fake_user_agent.py', 'tools/ksend.py', 'exceptions/__init__.py', 'exceptions/configException.py', 'exceptions/ksendException.py', 'exceptions/websiteException.py', 'website/__init__.py', 'website/lanjuhua.py', 'website/pdfhome.py', 'website/ziliaoh.py', 'widgets/downloaded.py', 'widgets/downloading.py', 'widgets/progressbar.py', 'widgets/send.py', 'widgets/systray.py', 'worker/__init__.py', 'worker/download.py', 'worker/search.py', 'worker/send.py'],
              pathex=['/Users/leetao/Workspace/py/kindlehelper'],
              binaries=[],
              datas=[],
