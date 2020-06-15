@@ -56,7 +56,7 @@ python3 -m setup.py py2app
 #### Windows、Linux
 
 ```bash
-pip intall pyinstaller
+pip install pyinstaller
 pyinstaller src\kindelHelper.spec
 ```
 
