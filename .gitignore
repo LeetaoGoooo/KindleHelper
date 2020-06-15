@@ -1,0 +1,8 @@
+venv
+*.pyc
+.vscode
+downloads
+dist
+build
+.eggs
+.DS_Store
