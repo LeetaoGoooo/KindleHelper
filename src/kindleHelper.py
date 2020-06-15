@@ -4,7 +4,7 @@ import sys
 import hashlib
 from datetime import datetime
 # 打包的时候使用
-# import fix_qt_import_error
+import fix_qt_import_error
 
 from PyQt5.QtWidgets import QInputDialog, QApplication, QMainWindow, QMessageBox, QTableWidget, QFrame, QAbstractItemView, QHBoxLayout, QPushButton, QTableWidgetItem, QWidget, QAction
 from PyQt5.QtCore import Qt, QThread, pyqtSignal, QRect, QPoint, QUrl
@@ -29,7 +29,10 @@ class KindleHelper(KindleHelperUI, QMainWindow):
         super(KindleHelper, self).__init__(parent)
         self.version = "1.1.0"
         self.setWindowTitle("Kindle助手")
-        self.setWindowIcon(QIcon(os.path.join(root, 'src', 'kindle.icns')))     
+        if os.sys.platform == 'darwin':
+            self.setWindowIcon(QIcon(os.path.join(root, 'src', 'kindle.icns')))
+        else:
+            self.setWindowIcon(QIcon(os.path.join(root, 'src', 'logo.ico')))
         self.setupUi(self)
         self.clipboard = QApplication.clipboard()
         self.init_ui()
