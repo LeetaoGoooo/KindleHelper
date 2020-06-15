@@ -6,14 +6,15 @@ import os
 import json
 
 root = os.getcwd()
-src = os.path.join(root,'src')
-assets = os.path.join(root,'assets')
+config = os.path.join(root, 'src', 'config')
+assets = os.path.join(root, 'src', 'assets')
 
 class AboutPage(QWidget):
 
     def __init__(self, parent=None):
         super(AboutPage, self).__init__(parent)
         self.setGeometry(QRect(10, 20, 950, 800))
+        os.makedirs(config,exist_ok=True)
         self.init_ui()
 
     def init_ui(self):
@@ -42,8 +43,8 @@ class AboutPage(QWidget):
         self.init_config_panel()
 
     def init_config_panel(self):
-        if os.path.exists(os.path.join(src,'config','kindle-send.json')):
-            with open(os.path.join(src,'config','kindle-send.json'),'r') as f:
+        if os.path.exists(os.path.join(config,'kindle-send.json')):
+            with open(os.path.join(config,'kindle-send.json'),'r') as f:
                 kindle_send = json.load(f)
                 self.send_email.setText(kindle_send.get("sender","").strip())
                 self.send_password.setText(kindle_send.get("password","").strip())
@@ -51,13 +52,13 @@ class AboutPage(QWidget):
 
     def wechat_panel(self):
         self.wx_label = QLabel()
-        self.wx_label.setPixmap(QPixmap(os.path.join(src,'assets','wx.jpg')))
+        self.wx_label.setPixmap(QPixmap(os.path.join(assets,'wx.jpg')))
         self.about_layout.addRow('关注作者',self.wx_label)
 
 
     def reward_panel(self):
         self.reward_code_label = QLabel()
-        self.reward_code_label.setPixmap(QPixmap(os.path.join(src,'assets','reward.jpg')))
+        self.reward_code_label.setPixmap(QPixmap(os.path.join(assets,'reward.jpg')))
         self.about_layout.addRow('赞助作者',self.reward_code_label)
 
     def save_config(self):
@@ -75,7 +76,6 @@ class AboutPage(QWidget):
         return self.write_config(config_dict)
 
     def write_config(self, config_dict):
-        os.makedirs(os.path.join(src,'config','kindle-send.json'), exist_ok=True)
-        with open(os.path.join(src,'config','kindle-send.json'), 'w') as f:
+        with open(os.path.join(config,'kindle-send.json'), 'w') as f:
             json.dump(config_dict, f)
         QMessageBox.information(self, "保存提示", "保存配置文件成功")

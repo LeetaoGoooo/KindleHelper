@@ -20,6 +20,8 @@ class LanJuHua:
         self.ajax_url = 'http://www.lanjuhua.com/iajax.php'
         self.detail_url = 'http://www.lanjuhua.com/get_file_info.php'
         self.session = requests.Session()
+        self.session.mount('http://', requests.adapters.HTTPAdapter(pool_connections=100, pool_maxsize=100))
+        self.session.headers.update({'Connection':'Keep-Alive'})
         self.form_id = '206459435515'
         self.load_cookies()
         self.download_url = []

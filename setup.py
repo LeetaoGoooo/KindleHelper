@@ -19,9 +19,9 @@ OPTIONS = {
         'CFBundleDisplayName': APP_NAME,
         'CFBundleGetInfoString': "kinleHelper By Leetao",
         'CFBundleIdentifier': "com.gmail.cn.leetao94",
-        'CFBundleVersion': "1.0.0",
-        'CFBundleShortVersionString': "1.0.0",
-        'NSHumanReadableCopyright': u"Copyright © 2019, Leetao, All Rights Reserved"
+        'CFBundleVersion': "1.1.0",
+        'CFBundleShortVersionString': "1.1.0",
+        'NSHumanReadableCopyright': u"Copyright © 2020, Leetao, All Rights Reserved"
     },
     'includes':['PyQt5',"sip"]
 }

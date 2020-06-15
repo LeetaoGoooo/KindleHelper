@@ -55,16 +55,16 @@ class SearchWorker(QThread):
         try:
             direct_download_dict_list += self.pdfHome_search()
         except Exception as e:
-            print(f'15kankan搜索异常')
+            print(f'pdfHome搜索异常')
         try:
             direct_download_dict_list += self.lanjuhua_search()
         except Exception as e:
             traceback.print_exc()
             print(f'蓝菊花搜索异常:{e}')
-        # try:
-        net_download_dict_list = self.ziliaoh_search()
-        # except Exception as e:
-        
-        #     print(f'搜索异常:{e}')
+            
+        try:
+            net_download_dict_list = self.ziliaoh_search()
+        except Exception as e:
+            print(f'搜索异常:{e}')
 
         self.trigger.emit({"direct":direct_download_dict_list,"net":net_download_dict_list})

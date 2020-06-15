@@ -4,7 +4,7 @@ import sys
 import hashlib
 from datetime import datetime
 # 打包的时候使用
-import fix_qt_import_error
+# import fix_qt_import_error
 
 from PyQt5.QtWidgets import QInputDialog, QApplication, QMainWindow, QMessageBox, QTableWidget, QFrame, QAbstractItemView, QHBoxLayout, QPushButton, QTableWidgetItem, QWidget, QAction
 from PyQt5.QtCore import Qt, QThread, pyqtSignal, QRect, QPoint, QUrl
@@ -13,9 +13,7 @@ from PyQt5.QtGui import QIcon, QPixmap, QDesktopServices
 
 from ui import KindleHelperUI
 from widgets import ProgressBar, SysTray
-
 from worker import SearchWorker, DownloadWorker
-from common import Action
 
 import os
 import json
@@ -31,8 +29,7 @@ class KindleHelper(KindleHelperUI, QMainWindow):
         super(KindleHelper, self).__init__(parent)
         self.version = "1.1.0"
         self.setWindowTitle("Kindle助手")
-        self.setWindowIcon(QIcon(os.path.join(root, 'src', 'kindle.icns')))
-        self.user_info = os.path.join(config, 'userInfo.json')
+        self.setWindowIcon(QIcon(os.path.join(root, 'src', 'kindle.icns')))     
         self.setupUi(self)
         self.clipboard = QApplication.clipboard()
         self.init_ui()
@@ -212,12 +209,8 @@ class KindleHelper(KindleHelperUI, QMainWindow):
         return btn_dict
 
     def copy_download_url(self):
-        if self.clipboard.text() == self.sender().objectName():
-            QMessageBox.information(self, None, '下载地址成功复制到剪贴板!')
-            return
         self.clipboard.setText(self.sender().objectName())
         QMessageBox.information(self, None, '下载地址成功复制到剪贴板!')
-
 
     def create_download_btn(self, download_dict):
         widget = QWidget()
