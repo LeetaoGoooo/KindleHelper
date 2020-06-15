@@ -70,4 +70,4 @@ pyinstaller src\kindelHelper.spec
 
 ## 📜 开源许可
 
-基于 [MIT license](https://opensource.org/licenses/MIT) 许可进行开源。
+基于 [GPLv3 license](https://www.gnu.org/licenses/gpl-3.0.txt) 许可进行开源。
