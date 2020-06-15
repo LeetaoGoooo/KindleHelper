@@ -57,7 +57,7 @@ python3 -m setup.py py2app
 
 ```bash
 pip install pyinstaller
-pyinstaller src\kindelHelper.spec
+pyinstaller src\kindleHelper.spec
 ```
 
 ## ☑️ TODO
