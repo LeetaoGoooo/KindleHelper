@@ -13,6 +13,10 @@ kindle 助手，kindle 最好的伙伴
 
 KHelper 是一款找书的软件，目前支持三个站点的搜索。界面使用 PyQt5 开发的所以相对比较简单，但是完全不影响使用。
 
+## 📢免责声明
+
+本应用开源且免费，仅用于爬虫技术交流学习，搜索结果均来自源站，亦不承担任何责任
+
 ## ✨特点
 
 1. 📖过滤掉找书过程中烦人的广告
@@ -23,6 +27,10 @@ KHelper 是一款找书的软件，目前支持三个站点的搜索。界面使
 ## 💻应用界面
 
 ![KHelper](http://ww1.sinaimg.cn/large/006wYWbGly1gfrkh4h2rwj30xq0pm757.jpg)
+
+## ⚒安装下载
+
+从[Github Releases](https://github.com/Peach-Coding/KindleHelper/releases)下载对应平台
 
 ## ⌨️本地开发
 
@@ -71,3 +79,7 @@ pyinstaller src\kindleHelper.spec
 ## 📜 开源许可
 
 基于 [GPLv3 license](https://www.gnu.org/licenses/gpl-3.0.txt) 许可进行开源。
+  1.  如果要在网络上分发，那么必须开源
+  2.  不能以盈利为目的，不能插入任何形式的广告
+  3.  注明原项目出处
+  4.  继承相同协议
