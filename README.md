@@ -1,5 +1,7 @@
 # KHelper
 
+[English Version](https://github.com/Peach-Coding/KindleHelper/blob/master/ENGLISHREADME.md)
+
 >本项目仅供学习用途，帮助大家熟悉爬虫以及PyQt5，严禁任何商业用途的使用，
 
 kindle 助手，kindle 最好的伙伴
