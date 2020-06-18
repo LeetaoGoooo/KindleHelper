@@ -76,7 +76,7 @@ class KindleHelper(KindleHelperUI, QMainWindow):
         self.progressbar.setMinimumSize(0, 2)
         self.progressbar.start()
         self.progressbar.setTextVisible(False)
-        # self.progressbar.setHidden(True)
+        self.progressbar.setHidden(True)
 
     def init_sider_btn_groups(self):
         self.sider_page_dict = {

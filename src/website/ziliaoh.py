@@ -14,7 +14,8 @@ import ast
 
 
 root = os.getcwd()
-store = os.path.join(root,'src','store')
+store = os.path.join(root, 'src', 'store')
+
 
 class ziliaoH:
 
@@ -68,7 +69,8 @@ class ziliaoH:
         fernet = Fernet(key)
         with open(self.local_store, 'w', encoding='utf-8') as f:
             txt = fernet.encrypt(str(self.search_dict).encode('utf-8'))
-            f.writelines([str(key, encoding='utf-8'),"\n",str(txt,encoding='utf-8')])
+            f.writelines([str(key, encoding='utf-8'),
+                          "\n", str(txt, encoding='utf-8')])
 
     async def search(self, keyword):
         search_results_list = []
@@ -81,7 +83,8 @@ class ziliaoH:
             txt = f.readline()
             fernet = Fernet(bytes(key.strip(), encoding='utf-8'))
             bytes_txt = bytes(txt, encoding='utf-8')
-            self.search_dict = ast.literal_eval(str(fernet.decrypt(bytes_txt),encoding='utf-8'))
+            self.search_dict = ast.literal_eval(
+                str(fernet.decrypt(bytes_txt), encoding='utf-8'))
             keys = self.search_dict.keys()
             match_key = [key for key in keys if keyword in key]
             for key in match_key:
