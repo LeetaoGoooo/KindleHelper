@@ -22,6 +22,7 @@ class ziliaoH:
         self.domain = 'http://www.ziliaoh.com/mobi.html'
         self.timeout = aiohttp.ClientTimeout(total=600)
         self.search_dict = {}
+        os.makedirs(store)
         self.local_store = os.path.join(store, 'ziliaoH.db')
 
     async def get_book_url(self, url):

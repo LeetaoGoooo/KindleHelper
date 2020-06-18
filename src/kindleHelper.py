@@ -4,7 +4,7 @@ import sys
 import hashlib
 from datetime import datetime
 # 打包的时候使用
-import fix_qt_import_error
+# import fix_qt_import_error
 
 from PyQt5.QtWidgets import QInputDialog, QApplication, QMainWindow, QMessageBox, QTableWidget, QFrame, QAbstractItemView, QHBoxLayout, QPushButton, QTableWidgetItem, QWidget, QAction
 from PyQt5.QtCore import Qt, QThread, pyqtSignal, QRect, QPoint, QUrl
@@ -71,15 +71,12 @@ class KindleHelper(KindleHelperUI, QMainWindow):
     def init_progressbar(self):
         self.progressbar = ProgressBar(
             self, minimum=0, maximum=0, textVisible=False, objectName="RedProgressBar")
-        if os.sys.platform == 'darwin':
-            self.progressbar.setGeometry(QRect(-10, 30, 1230, 4))
-        else:
-            self.progressbar.setGeometry(QRect(-10, 0, 1230, 4))
+        self.progressbar.setGeometry(QRect(-10, 0, 1230, 4))
         self.progressbar.setMaximumSize(16777215, 3)
         self.progressbar.setMinimumSize(0, 2)
         self.progressbar.start()
         self.progressbar.setTextVisible(False)
-        self.progressbar.setHidden(True)
+        # self.progressbar.setHidden(True)
 
     def init_sider_btn_groups(self):
         self.sider_page_dict = {
