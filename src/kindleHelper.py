@@ -71,10 +71,7 @@ class KindleHelper(KindleHelperUI, QMainWindow):
     def init_progressbar(self):
         self.progressbar = ProgressBar(
             self, minimum=0, maximum=0, textVisible=False, objectName="RedProgressBar")
-        if os.sys.platform == 'darwin':
-            self.progressbar.setGeometry(QRect(-10, 30, 1230, 4))
-        else:
-            self.progressbar.setGeometry(QRect(-10, 0, 1230, 4))
+        self.progressbar.setGeometry(QRect(-10, 0, 1230, 4))
         self.progressbar.setMaximumSize(16777215, 3)
         self.progressbar.setMinimumSize(0, 2)
         self.progressbar.start()

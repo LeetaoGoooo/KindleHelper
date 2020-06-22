@@ -12,8 +12,9 @@ from worker import SendWorker
 from common import check_send_config, ConfigDialog
 
 root = os.getcwd()
-data = os.path.join(root,'data')
-assets = os.path.join(root,'assets')
+data = os.path.join(root, 'src', 'data')
+assets = os.path.join(root, 'src', 'assets')
+
 
 class DownloadedPage(QWidget):
     send_trigger = pyqtSignal(dict)
@@ -35,9 +36,9 @@ class DownloadedPage(QWidget):
         for downloaded_dict in downloaded_dict_list:
             self.add_downloaded_item_to_widget(downloaded_dict)
 
-
     def add_downloaded_item(self, downloaded_dict):
-        downloaded_dict['date'] = time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
+        downloaded_dict['date'] = time.strftime(
+            '%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
         self.add_downloaded_item_to_widget(downloaded_dict)
         self.add_downloaded_item_to_data(downloaded_dict)
 
@@ -56,7 +57,7 @@ class DownloadedPage(QWidget):
 
     def load_downloaded_dict_list(self):
         if not os.path.exists(self.data_path):
-            os.makedirs(data,exist_ok=True)
+            os.makedirs(data, exist_ok=True)
             return []
         with open(self.data_path, 'r', encoding='utf-8') as f:
             downloaded_dict_list = json.load(f)
@@ -89,28 +90,29 @@ class DownloadedPage(QWidget):
         vlayout.addLayout(h_in_v_item_layout)
         hbox_layout.addLayout(vlayout)
 
-        file_path = os.path.join(root,'downloads',f'{book_name}')
+        file_path = os.path.join(root, 'downloads', f'{book_name}')
 
         if os.path.exists(file_path):
             del_btn = QPushButton()
-            del_btn.setIcon(QIcon(os.path.join(assets,'delete.png')))
+            del_btn.setIcon(QIcon(os.path.join(assets, 'delete.png')))
             del_btn.setStyleSheet("QPushButton{border:none}")
             del_btn.clicked.connect(lambda: self.remove_task(
                 downloaded_dict["id"], file_path))
 
             if push:
                 send_btn = QPushButton()
-                send_btn.setIcon(QIcon(os.path.join(assets,'send.png')))
+                send_btn.setIcon(QIcon(os.path.join(assets, 'send.png')))
                 send_btn.setStyleSheet("QPushButton{border:none}")
                 downloaded_dict['file_path'] = file_path
                 send_btn.clicked.connect(
                     lambda: self.send_to_kindle(downloaded_dict))
                 hbox_layout.addWidget(send_btn)
-                
+
             hbox_layout.addWidget(del_btn)
         else:
             download_btn = QPushButton()
-            download_btn.setIcon(QIcon(os.path.join(assets,'download_btn.png')))
+            download_btn.setIcon(
+                QIcon(os.path.join(assets, 'download_btn.png')))
             download_btn.setStyleSheet("QPushButton{border:none}")
             download_btn.clicked.connect(
                 lambda: self.regain(downloaded_dict))
@@ -173,14 +175,15 @@ class DownloadedPage(QWidget):
 
     def send_to_kindle(self, downloaded_dict):
         if not check_send_config():
-            reply = QMessageBox.question(self,'配置提示','推送配置未完成，不能推送书籍，需要现在配置吗?',QMessageBox.Yes|QMessageBox.No,QMessageBox.Yes)
+            reply = QMessageBox.question(
+                self, '配置提示', '推送配置未完成，不能推送书籍，需要现在配置吗?', QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
             if reply == QMessageBox.Yes:
                 config_dialog = ConfigDialog(self)
                 config_dialog.show()
             return
         downloaded_dict['status'] = "0"
         self.send_trigger.emit(downloaded_dict)
-        QMessageBox.information(self,'推送通知','正在推送...')
+        QMessageBox.information(self, '推送通知', '正在推送...')
         self.send_work = SendWorker(downloaded_dict)
         self.send_work.send_trigger.connect(self.call_back_send)
         self.send_work.start()
@@ -194,24 +197,22 @@ class DownloadedPage(QWidget):
     def get_icon_by_file_type(self, file_name):
         extension = self.get_file_extension(file_name)
         if extension in ['rar', 'zip', '7z']:
-            return QPixmap(os.path.join(assets,'zip.png')), False
+            return QPixmap(os.path.join(assets, 'zip.png')), False
         elif extension == 'mobi':
-            return QPixmap(os.path.join(assets,'book.png')), True
+            return QPixmap(os.path.join(assets, 'book.png')), True
         elif extension == 'pdf':
-            return QPixmap(os.path.join(assets,'pdf.png')), True
+            return QPixmap(os.path.join(assets, 'pdf.png')), True
         else:
-            return QPixmap(os.path.join(assets,'file.png')), False
+            return QPixmap(os.path.join(assets, 'file.png')), False
 
     def get_status_msg(self, status_code):
-        status_dict = {"1":"推送成功","-1":"推送失败","0":"正在推送"}
+        status_dict = {"1": "推送成功", "-1": "推送失败", "0": "正在推送"}
         if str(status_code) in status_dict:
             return status_dict[str(status_code)]
         else:
             return '未知状态'
 
     def call_back_send(self, send_dict):
-        QMessageBox.information(self,'推送完成',self.get_status_msg(send_dict['status']))
+        QMessageBox.information(
+            self, '推送完成', self.get_status_msg(send_dict['status']))
         self.send_trigger.emit(send_dict)
-
-
-

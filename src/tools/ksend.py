@@ -13,6 +13,9 @@ import json
 
 from exceptions import ConfigLackException, ConfigNotFoundError, EmailSendException, SendFileNotFoundError
 
+root = os.getcwd()
+src = os.path.join(root, 'src')
+
 class KindleSend:
     
     def __init__(self):
@@ -23,9 +26,9 @@ class KindleSend:
 
 
     def load_config(self):
-        if not os.path.exists('../../../config/kindle-send.json'):
+        if not os.path.exists(os.path.join(src,'config','kindle-send.json')):
             raise ConfigNotFoundError('Kindle send config file not found!')
-        with open('../../../config/kindle-send.json','r',encoding='utf-8') as f:
+        with open(os.path.join(src,'config', 'kindle-send.json'),'r',encoding='utf-8') as f:
             config_dict = json.load(f)
             if 'sender' not in config_dict or 'password' not in config_dict:
                 raise ConfigLackException('sender/password/recevier was lacked')
