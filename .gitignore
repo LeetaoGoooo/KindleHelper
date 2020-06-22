@@ -6,3 +6,4 @@ dist
 build
 .eggs
 .DS_Store
+kindleHelper.build

@@ -3,7 +3,7 @@ from PyQt5.QtCore import Qt, QThread, pyqtSignal
 import asyncio
 import traceback
 
-from website import LanJuHua, PdfHome, ziliaoH
+from website import LanJuHua, PdfHome, ziliaoH, kgBook
 
 
 class SearchWorker(QThread):
@@ -14,6 +14,7 @@ class SearchWorker(QThread):
         self.lanjuhua = LanJuHua()
         self.ziliaoh = ziliaoH()
         self.pdfHome = PdfHome()
+        self.kg = kgBook()
         self.keyword = keyword
 
     def pdfHome_search(self):
@@ -48,20 +49,41 @@ class SearchWorker(QThread):
         results = loop.run_until_complete(tasks)
         loop.close()
         return results
+    
+    def kg_search(self):
+        loop = asyncio.new_event_loop()
+        tasks = self.kg.search('三体')
+        results = loop.run_until_complete(tasks)
+        loop.close()
+
+        loop = asyncio.new_event_loop()
+        tasks = self.kg.close_session()
+        results = loop.run_until_complete(tasks)
+        loop.close()
+
+        return self.kg.search_dict_list        
 
     def run(self):
         net_download_dict_list = []
         direct_download_dict_list = []
+
         try:
             direct_download_dict_list += self.pdfHome_search()
         except Exception as e:
             print(f'pdfHome搜索异常')
+
         try:
             direct_download_dict_list += self.lanjuhua_search()
         except Exception as e:
             traceback.print_exc()
             print(f'蓝菊花搜索异常:{e}')
-            
+
+        try:
+            direct_download_dict_list += self.kg_search()
+        except Exception as e:
+            traceback.print_exc()
+            print(f'苦瓜搜索异常:{e}')
+
         try:
             net_download_dict_list = self.ziliaoh_search()
         except Exception as e:
