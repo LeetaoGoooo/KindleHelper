@@ -12,15 +12,16 @@ import requests
 import time
 from contextlib import closing
 import hashlib
+from common import root_path
 
-root = os.getcwd()
+root = root_path
 
 
 
 class Download:
     def __init__(self):
         self.file_size = 0
-        self.down_nums = 2
+        self.down_nums = 4
         self.max_retry = 10
         self.download_dir = os.path.join(root,'downloads')
         self.check_dir()

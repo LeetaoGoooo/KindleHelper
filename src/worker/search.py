@@ -52,7 +52,7 @@ class SearchWorker(QThread):
     
     def kg_search(self):
         loop = asyncio.new_event_loop()
-        tasks = self.kg.search('三体')
+        tasks = self.kg.search(self.keyword)
         results = loop.run_until_complete(tasks)
         loop.close()
 

@@ -7,16 +7,14 @@ import os
 import json
 import hashlib
 
-root = os.getcwd()
-data = os.path.join(root, 'src', 'data')
-assets = os.path.join(root, 'src', 'assets')
+from common import data_path,assets_path
 
 
 class DownloadingPage(QWidget):
     def __init__(self, parent=None):
         super(DownloadingPage, self).__init__(parent)
         self.download_worker_dict = {}
-        self.data_path = os.path.join(data, 'downloading.json')
+        self.data_path = os.path.join(data_path, 'downloading.json')
         self.downloaing_list_widget = QListWidget(self)
         self.downloaing_list_widget.setStyleSheet("QListWidget{border:none;}")
         self.downloaing_list_widget.setSpacing(2)
@@ -61,7 +59,7 @@ class DownloadingPage(QWidget):
 
     def load_downloading_dict_list(self):
         if not os.path.exists(self.data_path):
-            os.makedirs(data, exist_ok=True)
+            os.makedirs(data_path, exist_ok=True)
             return []
         with open(self.data_path, 'r', encoding='utf-8') as f:
             downloading_dict_list = json.load(f)
@@ -74,7 +72,7 @@ class DownloadingPage(QWidget):
         hbox_layout = QHBoxLayout()
 
         item_label = QLabel()
-        item_label.setPixmap(QPixmap(os.path.join(assets, 'book.png')))
+        item_label.setPixmap(QPixmap(os.path.join(assets_path, 'book.png')))
         hbox_layout.addWidget(item_label)
 
         vlayout = QVBoxLayout()
@@ -115,7 +113,7 @@ class DownloadingPage(QWidget):
         hbox_layout.addLayout(vlayout)
 
         del_btn = QPushButton()
-        del_btn.setIcon(QIcon(os.path.join(assets, 'delete.png')))
+        del_btn.setIcon(QIcon(os.path.join(assets_path, 'delete.png')))
         del_btn.setStyleSheet("QPushButton{border:none}")
         del_btn.clicked.connect(
             lambda: self.remove_task(downloading_dict["id"]))

@@ -13,8 +13,7 @@ from widgets import DownloadingPage, DownloadedPage, SendedPage, TaskPage, About
 
 import os
 
-root = os.getcwd()
-assets = os.path.join(root,'src','assets')
+from common import assets_path
 
 class Ui_KindleHelper(object):
     def setupUi(self, KindleHelper):
@@ -185,8 +184,8 @@ class Ui_KindleHelper(object):
 "    color:rgb(210,10,10)\n"
 "}")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(os.path.join(assets,"send.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        icon1.addPixmap(QtGui.QPixmap(os.path.join(assets,"send_selected.png")), QtGui.QIcon.Active, QtGui.QIcon.On)
+        icon1.addPixmap(QtGui.QPixmap(os.path.join(assets_path,"send.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap(os.path.join(assets_path,"send_selected.png")), QtGui.QIcon.Active, QtGui.QIcon.On)
         self.send_btn.setIcon(icon1)
         self.send_btn.setIconSize(QtCore.QSize(15, 15))
         self.send_btn.setCheckable(True)
@@ -200,8 +199,8 @@ class Ui_KindleHelper(object):
 "    color:rgb(210,10,10)\n"
 "}")
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(os.path.join(assets,"done.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        icon2.addPixmap(QtGui.QPixmap(os.path.join(assets,"done_selected.png")), QtGui.QIcon.Active, QtGui.QIcon.On)
+        icon2.addPixmap(QtGui.QPixmap(os.path.join(assets_path,"done.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap(os.path.join(assets_path,"done_selected.png")), QtGui.QIcon.Active, QtGui.QIcon.On)
         self.done_btn.setIcon(icon2)
         self.done_btn.setIconSize(QtCore.QSize(15, 15))
         self.done_btn.setCheckable(True)
@@ -214,8 +213,8 @@ class Ui_KindleHelper(object):
 "    color:rgb(210,10,10)\n"
 "}")
         icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap(os.path.join(assets,"about.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        icon3.addPixmap(QtGui.QPixmap(os.path.join(assets,"about_selected.png")), QtGui.QIcon.Active, QtGui.QIcon.On)
+        icon3.addPixmap(QtGui.QPixmap(os.path.join(assets_path,"about.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon3.addPixmap(QtGui.QPixmap(os.path.join(assets_path,"about_selected.png")), QtGui.QIcon.Active, QtGui.QIcon.On)
         self.about_btn.setIcon(icon3)
         self.about_btn.setIconSize(QtCore.QSize(16, 16))
         self.about_btn.setCheckable(True)
@@ -229,8 +228,8 @@ class Ui_KindleHelper(object):
 "    color:rgb(210,10,10)\n"
 "}")
         icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap(os.path.join(assets,"download.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        icon4.addPixmap(QtGui.QPixmap(os.path.join(assets,"download_selected.png")), QtGui.QIcon.Active, QtGui.QIcon.On)
+        icon4.addPixmap(QtGui.QPixmap(os.path.join(assets_path,"download.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon4.addPixmap(QtGui.QPixmap(os.path.join(assets_path,"download_selected.png")), QtGui.QIcon.Active, QtGui.QIcon.On)
         self.downloading_btn.setIcon(icon4)
         self.downloading_btn.setIconSize(QtCore.QSize(15, 15))
         self.downloading_btn.setCheckable(True)
@@ -244,8 +243,8 @@ class Ui_KindleHelper(object):
 "    color:rgb(210,10,10)\n"
 "}")
         icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap(os.path.join(assets,"add.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        icon5.addPixmap(QtGui.QPixmap(os.path.join(assets,"add_selected.png")), QtGui.QIcon.Active, QtGui.QIcon.On)
+        icon5.addPixmap(QtGui.QPixmap(os.path.join(assets_path,"add.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon5.addPixmap(QtGui.QPixmap(os.path.join(assets_path,"add_selected.png")), QtGui.QIcon.Active, QtGui.QIcon.On)
         self.new_task_btn.setIcon(icon5)
         self.new_task_btn.setIconSize(QtCore.QSize(15, 15))
         self.new_task_btn.setCheckable(True)
@@ -261,9 +260,9 @@ class Ui_KindleHelper(object):
 "    color:rgb(210,10,10);\n"
 "}")
         icon6 = QtGui.QIcon()
-        icon6.addPixmap(QtGui.QPixmap(os.path.join(assets,"search.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        icon6.addPixmap(QtGui.QPixmap(os.path.join(assets,"search_selected.png")), QtGui.QIcon.Active, QtGui.QIcon.On)
-        icon6.addPixmap(QtGui.QPixmap(os.path.join(assets,"search_selected.png")), QtGui.QIcon.Selected, QtGui.QIcon.On)
+        icon6.addPixmap(QtGui.QPixmap(os.path.join(assets_path,"search.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon6.addPixmap(QtGui.QPixmap(os.path.join(assets_path,"search_selected.png")), QtGui.QIcon.Active, QtGui.QIcon.On)
+        icon6.addPixmap(QtGui.QPixmap(os.path.join(assets_path,"search_selected.png")), QtGui.QIcon.Selected, QtGui.QIcon.On)
         self.search_btn.setIcon(icon6)
         self.search_btn.setIconSize(QtCore.QSize(15, 15))
         self.search_btn.setCheckable(True)

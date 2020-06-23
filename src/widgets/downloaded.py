@@ -9,11 +9,7 @@ import copy
 import time
 
 from worker import SendWorker
-from common import check_send_config, ConfigDialog
-
-root = os.getcwd()
-data = os.path.join(root, 'src', 'data')
-assets = os.path.join(root, 'src', 'assets')
+from common import check_send_config, ConfigDialog, data_path, assets_path
 
 
 class DownloadedPage(QWidget):
@@ -21,7 +17,7 @@ class DownloadedPage(QWidget):
 
     def __init__(self, parent=None):
         super(DownloadedPage, self).__init__(parent)
-        self.data_path = os.path.join(data, 'downloaded.json')
+        self.data_path = os.path.join(data_path, 'downloaded.json')
         self.rm_file_check = True
         self.downloaded_list_widget = QListWidget(self)
         self.downloaded_list_widget.setStyleSheet("QListWidget{border:none;}")
@@ -57,7 +53,7 @@ class DownloadedPage(QWidget):
 
     def load_downloaded_dict_list(self):
         if not os.path.exists(self.data_path):
-            os.makedirs(data, exist_ok=True)
+            os.makedirs(data_path, exist_ok=True)
             return []
         with open(self.data_path, 'r', encoding='utf-8') as f:
             downloaded_dict_list = json.load(f)
@@ -94,14 +90,14 @@ class DownloadedPage(QWidget):
 
         if os.path.exists(file_path):
             del_btn = QPushButton()
-            del_btn.setIcon(QIcon(os.path.join(assets, 'delete.png')))
+            del_btn.setIcon(QIcon(os.path.join(assets_path, 'delete.png')))
             del_btn.setStyleSheet("QPushButton{border:none}")
             del_btn.clicked.connect(lambda: self.remove_task(
                 downloaded_dict["id"], file_path))
 
             if push:
                 send_btn = QPushButton()
-                send_btn.setIcon(QIcon(os.path.join(assets, 'send.png')))
+                send_btn.setIcon(QIcon(os.path.join(assets_path, 'send.png')))
                 send_btn.setStyleSheet("QPushButton{border:none}")
                 downloaded_dict['file_path'] = file_path
                 send_btn.clicked.connect(
@@ -112,7 +108,7 @@ class DownloadedPage(QWidget):
         else:
             download_btn = QPushButton()
             download_btn.setIcon(
-                QIcon(os.path.join(assets, 'download_btn.png')))
+                QIcon(os.path.join(assets_path, 'download_btn.png')))
             download_btn.setStyleSheet("QPushButton{border:none}")
             download_btn.clicked.connect(
                 lambda: self.regain(downloaded_dict))
@@ -197,13 +193,13 @@ class DownloadedPage(QWidget):
     def get_icon_by_file_type(self, file_name):
         extension = self.get_file_extension(file_name)
         if extension in ['rar', 'zip', '7z']:
-            return QPixmap(os.path.join(assets, 'zip.png')), False
+            return QPixmap(os.path.join(assets_path, 'zip.png')), False
         elif extension == 'mobi':
-            return QPixmap(os.path.join(assets, 'book.png')), True
+            return QPixmap(os.path.join(assets_path, 'book.png')), True
         elif extension == 'pdf':
-            return QPixmap(os.path.join(assets, 'pdf.png')), True
+            return QPixmap(os.path.join(assets_path, 'pdf.png')), True
         else:
-            return QPixmap(os.path.join(assets, 'file.png')), False
+            return QPixmap(os.path.join(assets_path, 'file.png')), False
 
     def get_status_msg(self, status_code):
         status_dict = {"1": "推送成功", "-1": "推送失败", "0": "正在推送"}

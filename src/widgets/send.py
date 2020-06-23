@@ -9,14 +9,14 @@ import copy
 import time
 
 from worker import SendWorker
-from common import check_send_config, ConfigDialog
+from common import check_send_config, ConfigDialog, data_path, assets_path
 
 
 class SendedPage(QWidget):
 
     def __init__(self, parent=None):
         super(SendedPage, self).__init__(parent)
-        self.data_path = '../../../data/sended.json'
+        self.data_path = os.path.join(data_path,'sended.json')
         self.file_push_btn = PushButton(self)
         self.push_table = QTableWidget(self)
         self.init_ui()
@@ -38,7 +38,7 @@ class SendedPage(QWidget):
         self.file_push_btn.setStyleSheet("QPushButton#file_push_btn{background-color:white;color:white;border:none}")
         self.file_push_btn.setText("")
         icon = QIcon()
-        icon.addPixmap(QPixmap("upload.png"), QIcon.Normal, QIcon.Off)
+        icon.addPixmap(QPixmap(os.path.join(assets_path,"upload.png")), QIcon.Normal, QIcon.Off)
         self.file_push_btn.setIcon(icon)
         self.file_push_btn.setIconSize(QSize(64, 64))
         self.file_push_btn.setAutoDefault(False)
@@ -95,7 +95,7 @@ class SendedPage(QWidget):
 
     def load_sended_dict_list(self):
         if not os.path.exists(self.data_path):
-            os.makedirs('../../../data',exist_ok=True)
+            os.makedirs(data_path,exist_ok=True)
             return []
         with open(self.data_path, 'r', encoding='utf-8') as f:
             sended_dict_list = json.load(f)

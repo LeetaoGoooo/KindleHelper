@@ -4,7 +4,7 @@ import sys
 import hashlib
 from datetime import datetime
 # 打包的时候使用
-# import fix_qt_import_error
+import fix_qt_import_error
 
 from PyQt5.QtWidgets import QInputDialog, QApplication, QMainWindow, QMessageBox, QTableWidget, QFrame, QAbstractItemView, QHBoxLayout, QPushButton, QTableWidgetItem, QWidget, QAction
 from PyQt5.QtCore import Qt, QThread, pyqtSignal, QRect, QPoint, QUrl
@@ -14,13 +14,13 @@ from PyQt5.QtGui import QIcon, QPixmap, QDesktopServices
 from ui import KindleHelperUI
 from widgets import ProgressBar, SysTray
 from worker import SearchWorker, DownloadWorker
-
+from common import config_path, assets_path, root_path
 import os
 import json
 
-root = os.getcwd()
-config = os.path.join(root, 'src', 'config')
-assets = os.path.join(root, 'src', 'assets')
+root = root_path
+config = config_path
+assets = assets_path
 
 
 class KindleHelper(KindleHelperUI, QMainWindow):

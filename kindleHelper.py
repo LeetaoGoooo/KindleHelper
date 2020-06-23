@@ -4,7 +4,7 @@ import sys
 import hashlib
 from datetime import datetime
 # 打包的时候使用
-import fix_qt_import_error 
+# import fix_qt_import_error 
 
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QTableWidget, QFrame, QAbstractItemView, QHBoxLayout, QPushButton, QTableWidgetItem, QWidget
 from PyQt5.QtCore import Qt, QThread, pyqtSignal, QRect, QPoint

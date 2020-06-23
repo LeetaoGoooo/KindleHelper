@@ -4,6 +4,7 @@ import json
 
 from PyQt5.QtWidgets import QMessageBox, QDialog,QPushButton,QLineEdit,QFormLayout
 from PyQt5.QtCore import Qt
+from .constans import config_path
 
 
 class ConfigDialog(QDialog):
@@ -37,17 +38,17 @@ class ConfigDialog(QDialog):
         return self.write_config(config_dict)
     
     def write_config(self, config_dict):
-        os.makedirs('../../../config',exist_ok=True)
-        with open('../../../config/kindle-send.json','w') as f:
+        os.makedirs(config_path,exist_ok=True)
+        with open(os.path.join(config_path,'kindle-send.json'),'w') as f:
             json.dump(config_dict,f)
         QMessageBox.information(self,"保存提示","保存配置文件成功")
         self.destroy()
            
 
 def check_send_config():
-    if not os.path.exists('../../../config/kindle-send.json'):
+    if not os.path.exists(os.path.join(config_path,'kindle-send.json')):
         return False
-    with open('../../../config/kindle-send.json','r',encoding='utf-8') as f:
+    with open(os.path.join(config_path,'kindle-send.json'),'r',encoding='utf-8') as f:
         config_dict = json.load(f)
         if 'sender' not in config_dict or 'password' not in config_dict:
             return False

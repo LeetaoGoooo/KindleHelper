@@ -11,10 +11,7 @@ import asyncio
 import os
 from cryptography.fernet import Fernet
 import ast
-
-
-root = os.getcwd()
-store = os.path.join(root, 'src', 'store')
+from common import store_path
 
 
 class ziliaoH:
@@ -23,8 +20,8 @@ class ziliaoH:
         self.domain = 'http://www.ziliaoh.com/mobi.html'
         self.timeout = aiohttp.ClientTimeout(total=600)
         self.search_dict = {}
-        os.makedirs(store)
-        self.local_store = os.path.join(store, 'ziliaoH.db')
+        os.makedirs(store_path, exist_ok=True)
+        self.local_store = os.path.join(store_path, 'ziliaoH.db')
 
     async def get_book_url(self, url):
         try:
