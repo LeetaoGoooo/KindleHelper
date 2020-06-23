@@ -131,7 +131,7 @@ class PushButton(QPushButton):
         self.setAcceptDrops(True)
 
     def dragEnterEvent(self, e):
-        file_path = e.mimeData().text().strip().replace('file://','')
+        file_path = e.mimeData().text().strip().replace('file:///','')
         print(file_path)
         file_name = os.path.basename(file_path)
         extension = self.get_file_extension(file_name)

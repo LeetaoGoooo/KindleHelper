@@ -56,24 +56,34 @@ class kgBook:
         try:
             async with session.get(page_url) as resp:
                 content = await resp.text()
-                return self.get_download_url_by_content(content)
+                return await self.get_download_url_by_content(content)
         except Exception as e:
             print(f'get_download_url_by_detail_url:{e}')
             return {}
 
 
-    def get_download_url_by_content(self, content):
+    async def get_download_url_by_content(self, content):
         soup = BeautifulSoup(content, 'html.parser')
         title = soup.find('h1', class_='news_title')
         a = soup.find(href=re.compile('GetDown'), class_='button')
-        download_dict = {
-                f'{title.text}':{
-                    "download":a.attrs['href'],
-                    "size":"未知",
-                    "speed":"很快"
-                }
-            }
-        self.search_dict_list.append(download_dict)
+        session = self.get_session()
+        try:
+            async with session.get(a.attrs['href'].strip()) as resp:
+                if resp.url != URL(a.attrs['href'].strip()):
+                    real_url = str(resp.url)
+                    ext = real_url.split(".")[-1]
+                    download_dict = {
+                            f'{title.text}.{ext}':{
+                                "download":str(resp.url),
+                                "size":"未知",
+                                "speed":"很快"
+                            }
+                        }
+                self.search_dict_list.append(download_dict)                
+        except Exception as e:
+            print(f'get_download_url_by_detail_url:{e}')
+            return {}        
+
 
     async def search(self, keyword):
         detail_url_list = await self.get_result_page_by_keyword(keyword)

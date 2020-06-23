@@ -9,7 +9,7 @@ import copy
 import time
 
 from worker import SendWorker
-from common import check_send_config, ConfigDialog, data_path, assets_path
+from common import check_send_config, ConfigDialog, data_path, assets_path, root_path
 
 
 class DownloadedPage(QWidget):
@@ -86,7 +86,7 @@ class DownloadedPage(QWidget):
         vlayout.addLayout(h_in_v_item_layout)
         hbox_layout.addLayout(vlayout)
 
-        file_path = os.path.join(root, 'downloads', f'{book_name}')
+        file_path = os.path.join(root_path, 'downloads', f'{book_name}')
 
         if os.path.exists(file_path):
             del_btn = QPushButton()
