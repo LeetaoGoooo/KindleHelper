@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> af0b30a73cd0716b61ef23f8855f1e2b493f04f6
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>KindleHelper</class>
@@ -1537,4 +1533,3 @@ QPushButton#open_download_dir_btn{
  <resources/>
  <connections/>
 </ui>
->>>>>>> 9fd55c0d2d1858bed829587d4b5937ee8689d9ba
