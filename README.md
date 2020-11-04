@@ -1,4 +1,4 @@
-# KHelper
+![KindleHelper](https://socialify.git.ci/Peach-Coding/KindleHelper/image?description=1&font=Inter&forks=1&issues=1&language=1&owner=1&pattern=Plus&pulls=1&stargazers=1&theme=Light)
 
 [English Version](https://github.com/Peach-Coding/KindleHelper/blob/master/ENGLISHREADME.md)
 
