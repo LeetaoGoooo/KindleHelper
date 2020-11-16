@@ -49,11 +49,11 @@ class kgBook:
         soup = BeautifulSoup(content, 'html.parser')
         span_list = soup.find_all('span', class_='url')
         a_list = [span.find('a') for span in span_list]
-        return [a.string.strip() for a in a_list if a.attrs['href'] is not None]
+        return [a.attrs['href'] for a in a_list if a.attrs['href'] is not None]
 
     async def get_download_url_by_detail_url(self, page_url):
-        session = self.get_session()
         try:
+            session = self.get_session()
             async with session.get(page_url) as resp:
                 content = await resp.text()
                 return await self.get_download_url_by_content(content)

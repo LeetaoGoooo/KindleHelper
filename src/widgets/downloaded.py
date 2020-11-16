@@ -104,6 +104,12 @@ class DownloadedPage(QWidget):
                     lambda: self.send_to_kindle(downloaded_dict))
                 hbox_layout.addWidget(send_btn)
 
+            open_dir_btn = QPushButton()
+            open_dir_btn.setIcon(QIcon(os.path.join(assets_path, 'open.png')))
+            open_dir_btn.setStyleSheet("QPushButton{border:none}")
+            open_dir_btn.clicked.connect(lambda:self.open_dir(file_path))
+
+            hbox_layout.addWidget(open_dir_btn)
             hbox_layout.addWidget(del_btn)
         else:
             download_btn = QPushButton()
@@ -183,6 +189,10 @@ class DownloadedPage(QWidget):
         self.send_work = SendWorker(downloaded_dict)
         self.send_work.send_trigger.connect(self.call_back_send)
         self.send_work.start()
+
+    def open_dir(self, file_path):
+        dir_name = os.path.dirname(file_path)
+        os.startfile(dir_name)
 
     def regain(self, downloaded_dict):
         pass
