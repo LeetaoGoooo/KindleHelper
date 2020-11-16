@@ -2,6 +2,8 @@
 
 [English Version](https://github.com/Peach-Coding/KindleHelper/blob/master/ENGLISHREADME.md)
 
+[![Chat on Telegram](https://img.shields.io/badge/chat-Telegram-blueviolet?style=flat-square&logo=Telegram)](https://t.me/kindle_helper) [![Follow My Twitter](https://img.shields.io/badge/follow-Tweet-blue?style=flat-square&logo=Twitter)](https://twitter.com/LeetaoGoooo) [![Follow My Weibo](https://img.shields.io/badge/follow-Weibo-red?style=flat-square&logo=sina-weibo)](https://weibo.com/5984163100)
+
 >本项目仅供学习用途，帮助大家熟悉爬虫以及PyQt5，严禁任何商业用途的使用，
 
 kindle 助手，kindle 最好的伙伴
