@@ -90,7 +90,7 @@ pyinstaller src\kindleHelper.spec
   
 ## 支持 KindleHelper
 
-KindleHelper 是采用 BSD 许可的开源项目，使用完全免费。
+KindleHelper 是采用 GPL 许可的开源项目，使用完全免费。
 
 觉得不错的话，可以通过下列的方法来赞助 KindleHelper 的开发.
 
