@@ -4,7 +4,7 @@
 #
 #    pip-compile requirements.txt
 #
-aiohttp==3.6.2            # via -r requirements.txt
+aiohttp==3.7.4            # via -r requirements.txt
 async-timeout==3.0.1      # via -r requirements.txt, aiohttp
 attrs==19.3.0             # via -r requirements.txt, aiohttp
 beautifulsoup4==4.9.1     # via -r requirements.txt
