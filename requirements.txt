@@ -22,5 +22,5 @@ requests==2.24.0          # via -r requirements.txt
 six==1.15.0               # via cryptography
 soupsieve==2.0.1          # via -r requirements.txt, beautifulsoup4
 typing-extensions==3.7.4.2  # via -r requirements.txt
-urllib3==1.25.9           # via -r requirements.txt, requests
+urllib3==1.26.5           # via -r requirements.txt, requests
 yarl==1.4.2               # via -r requirements.txt, aiohttp
