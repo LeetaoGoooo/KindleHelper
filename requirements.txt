@@ -18,7 +18,7 @@ multidict==4.7.6          # via -r requirements.txt, aiohttp, yarl
 pycparser==2.20           # via cffi
 pyqt5-sip==4.19.19        # via -r requirements.txt, pyqt5
 pyqt5==5.11.3            # via -r requirements.txt
-requests==2.24.0          # via -r requirements.txt
+requests==2.31.0          # via -r requirements.txt
 six==1.15.0               # via cryptography
 soupsieve==2.0.1          # via -r requirements.txt, beautifulsoup4
 typing-extensions==3.7.4.2  # via -r requirements.txt
