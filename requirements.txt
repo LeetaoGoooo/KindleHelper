@@ -11,7 +11,7 @@ beautifulsoup4==4.9.1     # via -r requirements.txt
 certifi==2023.7.22        # via -r requirements.txt, requests
 cffi==1.14.0              # via cryptography
 chardet==3.0.4            # via -r requirements.txt, aiohttp, requests
-cryptography==41.0.3       # via -r requirements.txt
+cryptography==41.0.4       # via -r requirements.txt
 idna-ssl==1.1.0           # via -r requirements.txt
 idna==2.9                 # via -r requirements.txt, idna-ssl, requests, yarl
 multidict==4.7.6          # via -r requirements.txt, aiohttp, yarl
